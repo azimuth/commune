@@ -1,14 +1,28 @@
 require 'spec_helper'
 
 describe ExpenseReport do
+  before :each do
+    @vendor = mock_model(Vendor)
+    @vendor.stub(:name).and_return("Foo Bar, Inc")
+    @vendor.stub(:id).and_return(1)
+  end
+  
   context "new" do
     it "has a receipt_date" do
       ExpenseReport.new.should respond_to :receipt_date
     end
     
-    it "has a vendor" do
-      ExpenseReport.new.should respond_to :vendor
-      ExpenseReport.new.vendor.should be_nil
+    it "is not valid without a vendor" do
+      e = ExpenseReport.new
+      
+      e.should respond_to :vendor
+      e.should_not be_valid
+    end
+    
+    it "is valid with a vendor" do
+      e = ExpenseReport.new
+      e.vendor = @vendor
+      e.should be_valid
     end
   end
 end

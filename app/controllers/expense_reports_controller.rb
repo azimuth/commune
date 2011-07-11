@@ -10,4 +10,9 @@ class ExpenseReportsController < ApplicationController
     @expense_report = ExpenseReport.create(params[:expense_report])
     respond_with(@expense_report)
   end
+  
+  def show
+    @expense_report = ExpenseReport.where(:id => params[:id]).first
+    respond_with(@expense_report)
+  end
 end
