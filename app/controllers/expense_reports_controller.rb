@@ -6,4 +6,8 @@ class ExpenseReportsController < ApplicationController
     respond_with(@expense_report)
   end
   
+  def create
+    @expense_report = ExpenseReport.create(params[:expense_report])
+    respond_with(@expense_report)
+  end
 end
