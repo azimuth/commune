@@ -23,9 +23,8 @@ describe ExpenseReportsController do
         :receipt_date => date,
         :entry_date => date,
         :vendor_id => vendor.id,
-        :food_amount => 12.99
       }
-      ExpenseReport.first.food_amount.should eq(12.99)
+      ExpenseReport.first.receipt_date.should eq date
     end
   end
 end
