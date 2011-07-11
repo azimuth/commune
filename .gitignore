@@ -1,9 +1,4 @@
-\#*
-*~
-.#*
-.DS_Store
-.idea
-.project
-tmp
-nbproject
-*.swp
+.bundle
+db/*.sqlite3
+log/*.log
+tmp/
