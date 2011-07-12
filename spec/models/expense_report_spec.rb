@@ -24,5 +24,11 @@ describe ExpenseReport do
       e.vendor = @vendor
       e.should be_valid
     end
+    
+    it "has a note field" do
+      e = ExpenseReport.new
+      e.should respond_to :note
+    end
+    
   end
 end
