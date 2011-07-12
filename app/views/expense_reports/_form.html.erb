@@ -1,4 +1,9 @@
 <%= f.inputs do %>
   <%= f.input :receipt_date %>
-  <%= f.inputs :name, :for => :vendor, :as => :select, :collection => Vendor.all %>
+    <%= f.inputs :for => :vendor do |ff|%>
+      <%= ff.input :name, :as => :select, :collection => Vendor.all %>
+    <% end %>
+    <%= f.inputs :for => :member do |ff| %>
+      <%= ff.input :name, :as => :select, :collection => Member.all %>
+    <% end %>
 <% end %>
