@@ -15,29 +15,28 @@ describe ExpenseReport do
     @ei.stub(:id).and_return(1)
   end
   
-  context "new" do
-    it "has a receipt_date" do
-      ExpenseReport.new.should respond_to :receipt_date
-    end
+  it "has a receipt_date" do
+    ExpenseReport.new.should respond_to :receipt_date
+  end
+  
+  it "is not valid without a vendor" do
+    e = ExpenseReport.new
     
-    it "is not valid without a vendor" do
-      e = ExpenseReport.new
-      
-      e.should respond_to :vendor
-      e.should_not be_valid
-    end
-    
-    it "is valid with a vendor" do
-      e = ExpenseReport.new
-      e.vendor = @vendor
-      e.should be_valid
-    end
-    
-    it "has a note field" do
-      e = ExpenseReport.new
-      e.should respond_to :note
-    end
-    
+    e.should respond_to :vendor
+    e.should_not be_valid
+  end
+  
+  it "is valid with a vendor" do
+    e = ExpenseReport.new
+    e.vendor = @vendor
+    e.should be_valid
+  end
+  
+  it "has a note field" do
+    e = ExpenseReport.new
+    e.should respond_to :note
+  end
+  
   it "has expense_items" do
     e = ExpenseReport.new
     e.expense_items << @ei
