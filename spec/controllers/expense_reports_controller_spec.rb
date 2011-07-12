@@ -8,6 +8,7 @@ describe ExpenseReportsController do
     @vendor.stub(:id).and_return(1)
     Vendor.stub(:find).and_return(@vendor)
   end
+  
   describe "GET new" do
     it "assigns @expense_report" do
       get :new
@@ -21,13 +22,18 @@ describe ExpenseReportsController do
   end
   
   describe "POST create" do
-    it "creates a new ExpenseReport from params" do
+    before :each do
       post :create, :expense_report => { 
         :receipt_date => @date,
         :entry_date => @date,
         :vendor_id => @vendor.id,
       }
+    end
+    it "creates a new ExpenseReport from params" do
       ExpenseReport.first.receipt_date.should eq @date
+    end
+    it "redirects to GET show" do
+      response.should redirect_to "/expense_reports/#{ExpenseReport.first.id}"
     end
   end
   
