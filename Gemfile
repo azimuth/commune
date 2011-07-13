@@ -1,4 +1,5 @@
-source 'http://rubygems.org'
+source :rubygems 
+source 'http://gems.github.com/'
 
 gem 'rails', '3.0.9'
 gem 'formtastic'
@@ -13,4 +14,5 @@ group :development, :test do
    gem 'ruby-debug19', :require => 'ruby-debug'
    gem 'rspec-rails'
    gem 'webrat'
+   gem "simplecov", "~> 0.4.2"
  end
